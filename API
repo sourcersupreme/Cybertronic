@@ -1,0 +1,12 @@
+{
+  "text": "Your email content here"
+}
+---
+
+# 🚫 5. .gitignore
+
+```bash
+__pycache__/
+*.pyc
+.env
+node_modules/
