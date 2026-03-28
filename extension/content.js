@@ -3,12 +3,7 @@ function getEmailContent() {
     var subjectElement = document.querySelector("h2");
     var subject = subjectElement ? subjectElement.innerText : "";
 
-    var bodyDivs = document.querySelectorAll(".a3s");
-    var body = "";
-
-    bodyDivs.forEach(function(div) {
-        body += div.innerText;
-    });
+    var body = document.body.innerText; // fallback
 
     return subject + " " + body;
 }
@@ -80,7 +75,21 @@ function scanEmail() {
 var observer = new MutationObserver(function() {
     scanEmail();
 });
+setTimeout(function() {
+    console.log("Initial scan...");
+    scanEmail();
+}, 5000);
 
+// Also keep observer
+var observer = new MutationObserver(function() {
+    console.log("DOM changed → rescanning");
+    scanEmail();
+});
+
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
+});
 observer.observe(document.body, {
     childList: true,
     subtree: true
