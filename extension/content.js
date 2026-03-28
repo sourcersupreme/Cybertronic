@@ -12,9 +12,9 @@ function scanEmail() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log("API Response:", data);
-            showResult(data.prediction);
-        })
+    console.log("API Response:", data);
+    showResult(data.prediction, data.confidence);
+});
         .catch(err => console.error("API Error:", err));
     } else {
         console.log("No email content found");
