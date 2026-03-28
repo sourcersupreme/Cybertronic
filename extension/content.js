@@ -14,7 +14,7 @@ function scanEmail() {
         .then(data => {
     console.log("API Response:", data);
     showResult(data.prediction, data.confidence);
-});
+})
         .catch(err => console.error("API Error:", err));
     } else {
         console.log("No email content found");
