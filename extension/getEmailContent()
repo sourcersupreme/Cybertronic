@@ -1,0 +1,13 @@
+function getEmailContent() {
+    let subjectElement = document.querySelector("h2");
+    let subject = subjectElement ? subjectElement.innerText : "";
+
+    let bodyDivs = document.querySelectorAll(".a3s");
+    let body = "";
+
+    bodyDivs.forEach(div => {
+        body += div.innerText;
+    });
+
+    return subject + " " + body;
+}
