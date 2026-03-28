@@ -1,0 +1,36 @@
+function showResult(result, confidence) {
+    console.log("Showing result:", result, confidence);
+
+    // remove old banner if exists
+    let old = document.getElementById("phishing-banner");
+    if (old) old.remove();
+
+    let banner = document.createElement("div");
+    banner.id = "phishing-banner";
+
+    let message = "";
+
+    if (confidence < 60) {
+        message = "⚠️ Uncertain Email (" + confidence.toFixed(1) + "%)";
+        banner.style.background = "orange";
+    } else if (result === "phishing") {
+        message = "🚨 Phishing Detected (" + confidence.toFixed(1) + "%)";
+        banner.style.background = "red";
+    } else {
+        message = "✅ Safe Email (" + confidence.toFixed(1) + "%)";
+        banner.style.background = "green";
+    }
+
+    banner.innerText = message;
+
+    banner.style.position = "fixed";
+    banner.style.top = "10px";
+    banner.style.right = "10px";
+    banner.style.color = "white";
+    banner.style.padding = "12px";
+    banner.style.zIndex = 9999;
+    banner.style.borderRadius = "8px";
+    banner.style.fontWeight = "bold";
+
+    document.body.appendChild(banner);
+}
