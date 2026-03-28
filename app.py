@@ -18,5 +18,8 @@ def predict():
     result = predict_fast(text)
     return jsonify(result)
 
+import os
+
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))# 🔥 THIS LINE IS REQUIRED
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)# 🔥 THIS LINE IS REQUIRED
