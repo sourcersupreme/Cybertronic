@@ -1,0 +1,5 @@
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.json["text"]
+    result = predict_fast(data)
+    return {"prediction": result}
